@@ -1,19 +1,16 @@
 const express = require('express');
 const app = express();
 
-app.set('view engine', ejs);
+app.set('view engine','ejs');
+
 
 app.use((req,res,next)=>{
-    console.log(req.url);
-    console.log("this in middleware");
-    res.send('Hello World from middleware');
+    console.log("this is middleware");
+    // res.send("this middleware is used to log the request and response objects");
     return next();
-}
-)
-
-
+})
 app.get('/',(req,res)=>{
-    res.send ('Hello World');
+    res.render('index');
 })
 app.get('/about',(req,res)=>{
     res.send ('About Page');
