@@ -5,3 +5,5 @@ server real time = npx nodemon app.jsy
 express install = npm i express;
 
 ejs install =  npm i ejs; //for use Html
+
+mongobd install = npm i mongoose

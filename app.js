@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const userModel = require('./models/user');
 
 app.set('view engine','ejs');
 
