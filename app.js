@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const userModel = require('./models/user');
+const connection = require('./config/db');
 
 app.set('view engine','ejs');
 
@@ -32,6 +33,22 @@ app.get('/about',(req,res)=>{
 app.post('/get-form-data',(req,res)=>{
     console.log(req.body);
     res.send('Form data received');
+})
+
+app.get('/register',(req,res)=>{
+    res.render('register');
+})
+
+app.post('/register',async (req,res)=>{
+    
+    const {username,email,password} = req.body;
+
+    const newUser = await userModel.create({
+        username:username,
+        email:email,
+        password:password,
+    })
+    res.send(newUser);
 })
 
 app.listen(3000)
